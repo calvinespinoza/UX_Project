@@ -1,0 +1,134 @@
+* {
+    font-family: Montserrat;
+    margin: auto;
+}
+
+.hidden {
+    display: none;
+}
+
+#navBar {
+    background: linear-gradient(to right, #6E4D6E, #2a9c9c);
+    font-family: Montserrat;
+    color: white;
+}
+
+#jumbotron {
+    background: linear-gradient(to right, #6E4D6E, #2a9c9c);
+    font-family: Montserrat;
+    COLOR: WHITE;
+    --height: 500px;
+}
+
+#explore {
+    text-align: center;
+}
+
+#mainTitle {
+    margin-top: 20px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+#contentTitle {
+    margin: 100px;
+    font-weight: 800;
+    letter-spacing: 8px;
+    color: #4E7888;
+}
+
+#subTitle {
+    font-weight: 300;
+    font-size: 30px;
+    letter-spacing: 3px;
+}
+
+#nav-items {
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 3px;
+}
+
+.nav-item {
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#navbar-brand {
+    font-weight: 800;
+    font-size: 30px;
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+#bt-login {
+    background-color: white;
+    color: #4E7888;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.322);
+    width: 200px;
+    height: 50px;
+    font-weight: 600;
+    letter-spacing: 5px;
+    margin: 30px;
+    align-content: center;
+}
+
+#bt-event {
+    background-color: rgb(255, 255, 255);
+    color: #4E7888;
+    border: #95989A;
+    box-shadow: 5px 7px 20px rgba(0, 0, 0, 0.11);
+    width: 400px;
+    height: 250px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    margin: 30px;
+    align-content: left;
+    position: relative;
+}
+
+#box-event {
+    background-color: rgb(253, 253, 253);
+    width: 400px;
+    height: 75px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    text-align: left;
+    color: #95989A;
+}
+
+#event-name {
+    margin-top: 20px;
+    margin-bottom: 3px;
+    margin-left: 20px;
+}
+
+#event-location {
+    margin-top: 2px;
+    margin-left: 20px;
+    font-weight: 200;
+}
+
+#bt-login:hover {
+    background-color: rgba(255, 255, 255, 0.87);
+    color: #4E7888;
+}
+
+#authButtons {
+    margin: 5%;
+    text-align: center;
+}
+
+#bt-tag {
+    background-color: rgb(230, 230, 230);
+    --text-align: center;
+    
+    width: 130px;
+}
+
+#tags {
+    align-items: center;
+}
