@@ -4,6 +4,7 @@ import './App.css';
 import { Navbar } from './components/Navbar';
 import { Jumbotron } from './components/Jumbotron';
 import * as firebase from 'firebase';
+import { Map } from './Map';
 
 class App extends Component {
 
@@ -41,6 +42,7 @@ class App extends Component {
       <div>
         <Navbar />
         <Jumbotron event={this.handleLoginGoogle}/>
+        <Map />
         <div className="App">
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
