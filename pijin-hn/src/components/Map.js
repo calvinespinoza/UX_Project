@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
  
@@ -32,4 +33,13 @@ class Map extends Component {
   }
 }
  
+=======
+import React from 'react';
+
+const Map = () =>
+  <div>
+    <h1>Map Page</h1>
+  </div>
+
+>>>>>>> 9dd2ecf484c06f065913961475ea90b4e9488107
 export default Map;

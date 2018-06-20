@@ -2,47 +2,107 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Navbar } from './components/Navbar';
-import { Jumbotron } from './components/Jumbotron';
 import * as firebase from 'firebase';
-import { Map } from './Map';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import LandingPage from './components/Landing';
+import HomePage from './components/Home';
+import Map from './components/Map';
+import Explore from './components/Explore';
+import Account from './components/Account';
+import SignUpPage from './components/SignUpPage';
+import * as routes from './constants/routes';
+import { Map } from './components/Map'
+
 
 class App extends Component {
 
-  constructor(props)
-  {
+  constructor(props) {
     super(props);
     this.state = {
-      user : null,
+      user: null,
     }
     this.handleLoginGoogle = this.handleLoginGoogle.bind(this);
   }
 
-  handleLoginGoogle(){
-    if (this.state.user){
+  handleLoginGoogle() {
+    if (this.state.user) {
       firebase.auth().signOut()
         .then(result => console.log(`${result} ha salido`))
-        .catch(err =>  console.log(err))
-      this.setState({user : null, google: "Google"})
-    }else {
+        .catch(err => console.log(err))
+      this.setState({ user: null, google: "Google" })
+    } else {
       const provider = new firebase.auth.GoogleAuthProvider()
       firebase.auth().signInWithPopup(provider)
         .then(res => {
           this.setState({
-            user : res.user
+            user: res.user
           })
-          this.setState({google : "Logout Google"})
+          console.log(this.state.user);
+          var ref = firebase.database().ref().child("Usuarios").child(this.state.user.uid);
+
+          ref.child("UID").set(this.state.user.uid);
+          ref.child("Name").set(this.state.user.displayName);
+          ref.child("Email").set(this.state.user.email);
+          ref.child("Phone Number").set(this.state.user.phoneNumber);
+          ref.child("Photo URL").set(this.state.user.photoURL);
+
+
+          this.setState({ google: "Logout Google" })
         })
-        .catch(err=> console.log("error: "+err))
-        
+        .catch(err => console.log("error: " + err))
+
     }
   }
 
   render() {
     return (
       <div>
-        <Navbar />
-        <Jumbotron event={this.handleLoginGoogle}/>
-        <Map />
+        <Router>
+          <div>
+            <Navbar />
+            <Route
+              exact path={routes.LANDING}
+              component={() => <LandingPage />}
+            />
+
+
+            <Route
+              exact path={routes.SIGN_UP}
+              component={() => <SignUpPage />}
+            />
+            {/*
+          <Route
+            exact path={routes.SIGN_IN}
+            component={() => <SignInPage />}
+          />
+          
+           <Route
+            exact path={routes.PASSWORD_FORGET}
+            component={() => <PasswordForgetPage />}
+          />
+          */}
+            <Route
+              exact path={routes.EXPLORE}
+              component={() => <Explore />}
+            />
+            <Route
+              exact path={routes.MAP}
+              component={() => <Map />}
+            />
+
+            <Route
+              exact path={routes.HOME}
+              component={() => <HomePage />}
+            />
+            <Route
+              exact path={routes.ACCOUNT}
+              component={() => <Account />}
+            />
+          </div>
+
+        </Router>
+
+        {/*        
         <div className="App">
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
@@ -51,7 +111,7 @@ class App extends Component {
           <p className="App-intro">
             To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        </div>
+        </div>*/}
       </div>
     );
   }
