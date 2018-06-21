@@ -21,9 +21,7 @@ class ExploreFeed extends Component {
   handleEvents() {
     var eventRef = firebase.database().ref().child("Eventos proximos");
     var exp = document.getElementById("explore-div");
-    console.log(exp);
 
-    console.log(eventRef);
     eventRef.on("child_added", snap => {
       var nombre = snap.child("Nombre").val();
       var lugar = snap.child("Lugar").val();

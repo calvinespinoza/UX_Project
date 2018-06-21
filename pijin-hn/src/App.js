@@ -48,7 +48,6 @@ class App extends Component {
           })
           console.log(this.state.user);
           var ref = firebase.database().ref().child("Usuarios").child(this.state.user.uid);
-
           ref.child("UID").set(this.state.user.uid);
           ref.child("Name").set(this.state.user.displayName);
           ref.child("Email").set(this.state.user.email);

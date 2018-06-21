@@ -11,6 +11,49 @@ const Navbar = ({ authUser }) =>
             : <NavNonAuth />
         }
     </div>
+
+/*export class Navbar extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            authUser: this.props.authUser
+        }
+        this.handleName = this.handleName.bind(this);
+    }
+
+    componentDidMount()
+    {
+        this.handleName();
+        
+    }
+
+    handleName() {
+        var user = this.props.authUser;
+        console.log(user);
+        console.log("hola");
+        if (user) {
+            console.log(user);
+            var ref = firebase.database().ref().child("Usuarios").child(user.uid);
+            var nom = ref.child("Nombre").val;
+            console.log(nom);
+            this.setState({
+                name: nom
+            })
+        }
+    }
+
+    render() {
+        return(
+            <div>
+            {this.props.authUser
+                ? <NavAuth nombre={this.state.name} />
+                : <NavNonAuth />
+            }
+        </div>
+        )
+    }
+}*/
+
 const NavNonAuth = () =>
     <div>
         <nav id="navBar" className="navbar navbar-expand-lg navbar-dark bg-dark" >
