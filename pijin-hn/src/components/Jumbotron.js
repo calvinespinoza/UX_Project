@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Jumbotron.css';
 import * as firebase from 'firebase';
 import SignUpButton from './SignUpButton';
+import SignInButton from './SignInButton';
 export class Jumbotron extends Component {
     constructor(props)
     {
@@ -26,7 +27,7 @@ export class Jumbotron extends Component {
                 </div>
                 <div id="authButtons">
                     <SignUpButton />
-                    <button className="w3-button w3-round-xxlarge" id="bt-login">LOG IN</button>
+                    <SignInButton/>
                 </div>
             </div>
         );
