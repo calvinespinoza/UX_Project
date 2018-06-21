@@ -46,7 +46,8 @@ class SignInForm extends Component {
             history,
         } = this.props;
         //auth.signInWithEmailAndPassword(email,password);
-        auth.signInWithEmailAndPassword(email, password)
+
+        firebase.auth().signInWithEmailAndPassword(email, password)
             .then(() => {
                 this.setState(() => ({ ...INITIAL_STATE }));
                 history.push(routes.HOME);

@@ -6,3 +6,4 @@ export const ACCOUNT = '/account';
 export const PASSWORD_FORGET = '/pw-forget';
 export const EXPLORE = '/explore';
 export const MAP = '/map';
+export const NEW_EVENT = '/new-event';

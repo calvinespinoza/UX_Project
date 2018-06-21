@@ -26,3 +26,7 @@
     letter-spacing: 10px;
     text-transform: uppercase;
 }
+
+#sign-list {
+    list-style-type: none;
+}

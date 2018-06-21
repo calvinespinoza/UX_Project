@@ -27,7 +27,7 @@ export class Jumbotron extends Component {
                 </div>
                 <div id="authButtons">
                     <SignUpButton />
-                    <SignInButton/>
+                    <SignInButton />
                 </div>
             </div>
         );

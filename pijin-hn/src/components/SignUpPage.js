@@ -17,6 +17,7 @@ const INITIAL_STATE = {
     username: '',
     fullname: '',
     email: '',
+    telephone: '',
     passwordOne: '',
     passwordTwo: '',
     error: null,
@@ -32,9 +33,9 @@ class SignUpForm extends Component {
         super(props);
         this.state = { INITIAL_STATE };
 
-        this.addUser = this.addUser.bind(this);
+        /*this.addUser = this.addUser.bind(this);*/
     }
-
+/*
     addUser() {
         var ref = firebase.database().ref().child("Usuarios");
 
@@ -42,17 +43,19 @@ class SignUpForm extends Component {
 
         ref.child(key).set({
             "Username": this.state.username,
-            "Nombre Completo": this.state.fullname,
+            "Nombre": this.state.fullname,
             "Email": this.state.email,
+            "Telefono": this.state.telephone,
             "Password": this.state.passwordOne,
             "Llave": key
         });
-    }
+    }*/
 
     onClick = (event) => {
         const {
             username,
             fullname,
+            telephone,
             email,
             passwordOne,
         } = this.state;
@@ -77,8 +80,9 @@ class SignUpForm extends Component {
 
                 ref.child(userId).set({
                     "Username": username,
-                    "Nombre Completo": fullname,
+                    "Nombre": fullname,
                     "Email": email,
+                    "Telephone": telephone,
                     "Password": passwordOne,
                     "Llave": userId
                 });
@@ -94,6 +98,7 @@ class SignUpForm extends Component {
             username,
             fullname,
             email,
+            telephone,
             passwordOne,
             passwordTwo,
             error,
@@ -130,6 +135,14 @@ class SignUpForm extends Component {
                             onChange={event => this.setState(byPropKey('email', event.target.value))}
                             type="text"
                             placeholder="Email Address"
+                        />
+                    </li>
+                    <li id="input-list-item">
+                        <input id="sign-up-input"
+                            value={telephone}
+                            onChange={event => this.setState(byPropKey('telephone', event.target.value))}
+                            type="email"
+                            placeholder="Telephone (optional)"
                         />
                     </li>
                     <li id="input-list-item">

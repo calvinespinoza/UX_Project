@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Navbar } from './components/Navbar';
+import  Navbar  from './components/Navbar';
 import * as firebase from 'firebase';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import LandingPage from './components/Landing';
@@ -10,6 +10,9 @@ import Map from './components/Map';
 import Explore from './components/Explore';
 import Account from './components/Account';
 import SignUpPage from './components/SignUpPage';
+import SignInPage from './components/SignInPage';
+import NewEvent from './components/NewEvent';
+
 import * as routes from './constants/routes';
 
 
@@ -18,9 +21,16 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: null,
+      
+      authUser: null,
     }
     this.handleLoginGoogle = this.handleLoginGoogle.bind(this);
+  }
+  componentDidMount(){
+    firebase.auth().onAuthStateChanged(authUser => {
+      authUser ? this.setState(()=>({authUser}))
+              : this.setState(() => ({authUser: null}));
+    });
   }
 
   handleLoginGoogle() {
@@ -58,7 +68,7 @@ class App extends Component {
       <div>
         <Router>
           <div>
-            <Navbar />
+            <Navbar authUser={this.state.authUser}/>
             <Route
               exact path={routes.LANDING}
               component={() => <LandingPage />}
@@ -66,8 +76,16 @@ class App extends Component {
 
 
             <Route
+              exact path={routes.SIGN_IN}
+              component={() => <SignInPage />}
+            />
+            <Route
               exact path={routes.SIGN_UP}
               component={() => <SignUpPage />}
+            />
+            <Route
+              exact path={routes.NEW_EVENT}
+              component={() => <NewEvent />}
             />
             {/*
           <Route
