@@ -59,16 +59,31 @@ class SignUpForm extends Component {
 
         firebase.auth().createUserWithEmailAndPassword(email, passwordOne)
             .then(authUser => {
-                {this.addUser()}
                 this.setState(() => ({ ...INITIAL_STATE }));
             })
             .catch(error => {
                 this.setState(byPropKey('error', error));
             });
 
+            firebase.auth().onAuthStateChanged(function (user){
+                if (user) {
+                    var userId = firebase.auth().currentUser.uid;
+                    var ref = firebase.database().ref().child("Usuarios");
+    
+                    var key = ref.push().getKey();
+                
+                    ref.child(userId).set({
+                        "Username": username,
+                        "Nombre Completo": fullname,
+                        "Email": email,
+                        "Password": passwordOne,
+                        "Llave": userId
+                    });
+                }
+            });
+
         event.preventDefault();
     }
-
 
 
     render() {
