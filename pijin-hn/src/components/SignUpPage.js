@@ -10,7 +10,7 @@ import 'firebase/auth';
 const SignUpPage = () =>
     <div id="sign-up-div">
         <div id="main-title">Sign Up</div>
-        <SignUpForm />
+        <SignUpForm history={history} />
     </div>
 
 const INITIAL_STATE = {
@@ -37,9 +37,9 @@ class SignUpForm extends Component {
 
     addUser() {
         var ref = firebase.database().ref().child("Usuarios");
-    
+
         var key = ref.push().getKey();
-    
+
         ref.child(key).set({
             "Username": this.state.username,
             "Nombre Completo": this.state.fullname,
@@ -56,31 +56,34 @@ class SignUpForm extends Component {
             email,
             passwordOne,
         } = this.state;
-
+        const {
+            history,
+        } = this.props;
         firebase.auth().createUserWithEmailAndPassword(email, passwordOne)
             .then(authUser => {
                 this.setState(() => ({ ...INITIAL_STATE }));
+                history.push(routes.HOME);
             })
             .catch(error => {
                 this.setState(byPropKey('error', error));
             });
 
-            firebase.auth().onAuthStateChanged(function (user){
-                if (user) {
-                    var userId = firebase.auth().currentUser.uid;
-                    var ref = firebase.database().ref().child("Usuarios");
-    
-                    var key = ref.push().getKey();
-                
-                    ref.child(userId).set({
-                        "Username": username,
-                        "Nombre Completo": fullname,
-                        "Email": email,
-                        "Password": passwordOne,
-                        "Llave": userId
-                    });
-                }
-            });
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                var userId = firebase.auth().currentUser.uid;
+                var ref = firebase.database().ref().child("Usuarios");
+
+                var key = ref.push().getKey();
+
+                ref.child(userId).set({
+                    "Username": username,
+                    "Nombre Completo": fullname,
+                    "Email": email,
+                    "Password": passwordOne,
+                    "Llave": userId
+                });
+            }
+        });
 
         event.preventDefault();
     }
