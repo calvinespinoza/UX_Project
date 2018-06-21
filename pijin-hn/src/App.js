@@ -11,6 +11,7 @@ import Explore from './components/Explore';
 import Account from './components/Account';
 import SignUpPage from './components/SignUpPage';
 import * as routes from './constants/routes';
+import { Map } from './components/Map'
 
 
 class App extends Component {
