@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import './SignUp.css';
 import './Jumbotron.css';
 
@@ -166,7 +166,7 @@ const SignUpLink = () =>
         <Link to={routes.SIGN_UP}>Sign Up</Link>
     </p>
 
-export default SignUpPage;
+export default withRouter(SignUpPage);
 
 export {
     SignUpForm,
