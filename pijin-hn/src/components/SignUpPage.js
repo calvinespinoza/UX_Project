@@ -7,7 +7,7 @@ import * as routes from '../constants/routes';
 import * as firebase from 'firebase';
 import 'firebase/auth';
 
-const SignUpPage = () =>
+const SignUpPage = ({history}) =>
     <div id="sign-up-div">
         <div id="main-title">Sign Up</div>
         <SignUpForm history={history} />
