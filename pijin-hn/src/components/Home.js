@@ -10,6 +10,8 @@ const Home = () =>
         <Link to={routes.NEW_EVENT}>
             <button className="w3-button w3-round-xxlarge" id="bt-new-event">New Event</button>
         </Link>
+
+        
     </div>
 
 export default Home;
