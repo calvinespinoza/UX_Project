@@ -44,7 +44,7 @@ class NewEventForm extends Component {
         var key = eventRef.push().getKey();
 
         eventRef.child(key).set({
-            "Nombre de Evento": this.state.eventname,
+            "Nombre": this.state.eventname,
             "Lugar": this.state.locationname,
             "Fecha Inicio": this.state.fechainicio,
             "Fecha Final": this.state.fechafinal,
