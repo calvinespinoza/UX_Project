@@ -45,7 +45,7 @@ class ExploreFeed extends Component {
       var lugar = snap.child("Lugar").val();
 
       var event = document.createElement('div');
-      event.className = "w3-button w3-round-xlarge";
+      event.className = "w3-button w3-round-xlarge zoom";
       event.setAttribute("id", "bt-event");
       var boxev = document.createElement('div');
       boxev.setAttribute("id", "box-event");
@@ -77,6 +77,7 @@ class ExploreFeed extends Component {
           isOpen={this.state.showModal}
           contentLabel="Minimal Modal Example">
           <button onClick={this.handleCloseModal}>Close Modal</button>
+
         </ReactModal>
       </div>
     );
