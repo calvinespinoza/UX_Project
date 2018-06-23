@@ -7,26 +7,29 @@
     height: 250px;
     font-weight: 600;
     letter-spacing: 3px;
-    margin: 30px;
+    margin: 2em;
     align-content: left;
     position: relative;
-    transition: transform .2s;
-
+    transition: transform .25s;
+    border-radius: 30px;
+    overflow: hidden
 }
 
 #bt-event:hover {
-    box-shadow: 5px 7px 20px rgba(0, 0, 0, 0.329);
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.329);
 }
 
 .zoom:hover {
-    -ms-transform: scale(1.1); /* IE 9 */
-    -webkit-transform: scale(1.1); /* Safari 3-8 */
-    transform: scale(1.1); 
+    -ms-transform: scale(1.1);
+    /* IE 9 */
+    -webkit-transform: scale(1.1);
+    /* Safari 3-8 */
+    transform: scale(1.1);
 }
 
 #box-event {
     background-color: rgb(253, 253, 253);
-    width: 400px;
+    width: 100%;
     height: 75px;
     position: absolute;
     bottom: 0;
@@ -36,13 +39,88 @@
 }
 
 #event-name {
-    margin-top: 20px;
+    margin-top: 1em;
     margin-bottom: 3px;
-    margin-left: 20px;
+    margin-left: 1.5em;
 }
 
 #event-location {
     margin-top: 2px;
-    margin-left: 20px;
+    margin-left: 1.5em;
     font-weight: 200;
+}
+
+.Modal {
+    position: absolute;
+    top: 1vmin;
+    left: 1vmin;
+    right: 1vmin;
+    bottom: 1vmin;
+    background-color: white;
+    margin: 5vmin 10vmin;
+    margin-top: 15vmin;
+    border: none;
+    border-radius: 20px;
+    padding: 5vmin;
+    z-index: 1000;
+    box-shadow: 2vmin 2vmin  10vmin rgba(75, 75, 75, 0.308);
+}
+
+.Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(197, 197, 197, 0.315);
+}
+
+#close-button {
+    position: absolute;
+    right: 2vmin;
+    top: 2vmin;
+    border-radius: 100%;
+    height: 7vmin;
+    width: 7vmin;
+}
+
+#heading-modal {
+    font-family: Montserrat;
+    margin: 2vmin;
+    font-size: 2vmin;
+}
+
+#event-name-modal {
+    font-size: 3em;
+    font-weight: 700;
+    letter-spacing: .1em;
+}
+
+#event-loc-modal {
+    font-size: 2em;
+}
+
+#event-title {
+    font-size: 1.3em;
+    font-weight: 200;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+}
+
+#modal-detail {
+    position: absolute;
+    width: 100%;
+    height: 8em;
+    top: 0;
+    right: 0;
+    background-color: linear-gradient(to right, rgb(86, 106, 126), rgb(65, 130, 141));
+}
+
+@media (max-width: 500px) {
+    #bt-event {
+        width: 80vw;
+    }
+    .Modal {
+        margin: 2vmin 4vmin;
+    }
 }

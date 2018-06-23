@@ -6,11 +6,11 @@ import './Explore.css';
 
 const Explore = () =>
   <div id="explore">
-    <h1 id="main-title">Explore</h1>
+    <h1 id="main-title"></h1>
     <ExploreFeed />
   </div>
 
-class ExploreFeed extends Component {
+export class ExploreFeed extends Component {
 
   constructor(props) {
     super(props);
@@ -18,7 +18,11 @@ class ExploreFeed extends Component {
     this.render = this.render.bind(this);
 
     this.state = {
-      showModal: false
+      showModal: false,
+      currentEvent: "",
+      eventName: "",
+      location: "",
+      fechaInicio: ""
     };
 
     this.handleOpenModal = this.handleOpenModal.bind(this);
@@ -27,6 +31,22 @@ class ExploreFeed extends Component {
 
   handleOpenModal() {
     this.setState({ showModal: true });
+    var key = this.state.currentEvent;
+    var eventRef = firebase.database().ref().child("Eventos proximos").child(key)
+    var nombre;
+    var locName;
+    var fInicio;
+    eventRef.on("value", function (snapshot) {
+      nombre = snapshot.child("Nombre").val();
+      locName = snapshot.child("Lugar").val();
+      fInicio = snapshot.child("Fecha Inicio").val();
+    })
+    this.setState(
+      {
+        "eventName": nombre,
+        "location": locName,
+        "fechaInicio": fInicio
+      });
   }
 
   handleCloseModal() {
@@ -36,6 +56,16 @@ class ExploreFeed extends Component {
     this.handleEvents();
   }
 
+  getContent() {
+    firebase.database().ref().child("Eventos proximos").child("authUser.uid")
+      .child("Nombre").on("value", function (snapshot) {
+        console.log(snapshot.val());
+        var nom = document.createTextNode(snapshot.val());
+        document.getElementById("navbarDropdown").innerHTML = "";
+        document.getElementById("navbarDropdown").appendChild(nom);
+      })
+  }
+
   handleEvents() {
     var eventRef = firebase.database().ref().child("Eventos proximos");
     var exp = document.getElementById("explore-div");
@@ -43,6 +73,7 @@ class ExploreFeed extends Component {
     eventRef.on("child_added", snap => {
       var nombre = snap.child("Nombre").val();
       var lugar = snap.child("Lugar").val();
+      var id = snap.child("Llave").val();
 
       var event = document.createElement('div');
       event.className = "w3-button w3-round-xlarge zoom";
@@ -66,6 +97,12 @@ class ExploreFeed extends Component {
 
       event.appendChild(boxev);
       event.onclick = this.handleOpenModal;
+
+      event.onmouseover = () => {
+        console.log("hi");
+        this.setState({ "currentEvent": id })
+        console.log(this.state.currentEvent);
+      };
       exp.appendChild(event);
     })
   }
@@ -75,9 +112,18 @@ class ExploreFeed extends Component {
       <div id="explore-div">
         <ReactModal
           isOpen={this.state.showModal}
-          contentLabel="Minimal Modal Example">
-          <button onClick={this.handleCloseModal}>Close Modal</button>
-
+          contentLabel="onRequestClose Example"
+          onRequestClose={this.handleCloseModal}
+          className="Modal"
+          overlayClassName="Overlay"
+        >
+          <div id="heading-modal">
+            <div id="modal-detail"></div>
+            <div id="event-title">{this.state.fechaInicio}</div>
+            <div id="event-name-modal">{this.state.eventName}</div>
+            <div id="event-loc-modal">{this.state.location}</div>
+          </div>
+          <button id="close-button" onClick={this.handleCloseModal}><span uk-icon="close"></span></button>
         </ReactModal>
       </div>
     );
@@ -108,11 +154,15 @@ class ExampleApp extends React.Component {
       <div>
         <button onClick={this.handleOpenModal}>Trigger Modal</button>
         <ReactModal
+          className="uk-modal-dialog uk-modal-body"
           isOpen={this.state.showModal}
           contentLabel="Minimal Modal Example"
         >
+
           <button onClick={this.handleCloseModal}>Close Modal</button>
         </ReactModal>
+
+
       </div>
     );
   }
@@ -121,5 +171,5 @@ class ExampleApp extends React.Component {
 export default Explore;
 
 export {
-  ExampleApp,
+  ExampleApp
 };

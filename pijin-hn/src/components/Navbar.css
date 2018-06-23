@@ -3,6 +3,8 @@
     background: linear-gradient(to right, #6E4D6E, #2a9c9c);
     font-family: Montserrat;
     color: white;
+    height: 10vmin;
+    font-size: 2vmin;
 }
 
 #nav-items {
@@ -20,7 +22,7 @@
 
 #navbar-brand {
     font-weight: 800;
-    font-size: 30px;
+    font-size: 2em;;
     margin-right: 30px;
     margin-left: 30px;
     letter-spacing: 10px;
@@ -32,13 +34,15 @@
 }
 
 #bt-logout {
-    background-color: white;
-    color: #4E7888;
-    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.322);
+    background-color: rgb(109,78,111);
+    color: white;
+    box-shadow: 0px 7px 20px rgba(0, 0, 0, 0.322);
     width: 200px;
     height: 50px;
     font-weight: 600;
     letter-spacing: 5px;
     margin: 30px;
     align-content: center;
+    border: none;
+    border-radius: 30px;
 }

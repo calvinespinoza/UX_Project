@@ -7,7 +7,8 @@ import * as routes from '../constants/routes';
 import * as firebase from 'firebase';
 import 'firebase/auth';
 
-const SignUpPage = ({history}) =>
+
+const SignUpPage = ({ history }) =>
     <div id="sign-up-div">
         <div id="main-title">Sign Up</div>
         <SignUpForm history={history} />
@@ -35,21 +36,21 @@ class SignUpForm extends Component {
 
         /*this.addUser = this.addUser.bind(this);*/
     }
-/*
-    addUser() {
-        var ref = firebase.database().ref().child("Usuarios");
-
-        var key = ref.push().getKey();
-
-        ref.child(key).set({
-            "Username": this.state.username,
-            "Nombre": this.state.fullname,
-            "Email": this.state.email,
-            "Telefono": this.state.telephone,
-            "Password": this.state.passwordOne,
-            "Llave": key
-        });
-    }*/
+    /*
+        addUser() {
+            var ref = firebase.database().ref().child("Usuarios");
+    
+            var key = ref.push().getKey();
+    
+            ref.child(key).set({
+                "Username": this.state.username,
+                "Nombre": this.state.fullname,
+                "Email": this.state.email,
+                "Telefono": this.state.telephone,
+                "Password": this.state.passwordOne,
+                "Llave": key
+            });
+        }*/
 
     onClick = (event) => {
         const {
@@ -115,6 +116,7 @@ class SignUpForm extends Component {
                 <ul id="input-list">
                     <li id="input-list-item">
                         <input id="sign-up-input"
+                            className="uk-input"
                             value={username}
                             onChange={event => this.setState(byPropKey('username', event.target.value))}
                             type="text"
@@ -123,6 +125,7 @@ class SignUpForm extends Component {
                     </li>
                     <li id="input-list-item">
                         <input id="sign-up-input"
+                            className="uk-input"
                             value={fullname}
                             onChange={event => this.setState(byPropKey('fullname', event.target.value))}
                             type="text"
@@ -131,6 +134,7 @@ class SignUpForm extends Component {
                     </li>
                     <li id="input-list-item">
                         <input id="sign-up-input"
+                            className="uk-input"
                             value={email}
                             onChange={event => this.setState(byPropKey('email', event.target.value))}
                             type="text"
@@ -139,6 +143,7 @@ class SignUpForm extends Component {
                     </li>
                     <li id="input-list-item">
                         <input id="sign-up-input"
+                            className="uk-input"
                             value={telephone}
                             onChange={event => this.setState(byPropKey('telephone', event.target.value))}
                             type="email"
@@ -147,6 +152,7 @@ class SignUpForm extends Component {
                     </li>
                     <li id="input-list-item">
                         <input id="sign-up-input"
+                            className="uk-input"
                             value={passwordOne}
                             onChange={event => this.setState(byPropKey('passwordOne', event.target.value))}
                             type="password"
@@ -155,16 +161,18 @@ class SignUpForm extends Component {
                     </li>
                     <li id="input-list-item">
                         <input id="sign-up-input"
+                            className="uk-input"
                             value={passwordTwo}
                             onChange={event => this.setState(byPropKey('passwordTwo', event.target.value))}
                             type="password"
                             placeholder="Confirm Password"
                         />
                     </li>
+
                 </ul>
-                <button id="bt-signup" className="w3-button w3-round-xxlarge" disabled={isInvalid} onClick={this.onClick}>
+                <button id="bt-signup" disabled={isInvalid} onClick={this.onClick}>
                     Sign Up
-        </button>
+                </button>
 
                 {error && <p>{error.message}</p>}
             </div>

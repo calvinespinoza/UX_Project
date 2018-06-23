@@ -59,7 +59,7 @@ const Navbar = ({ authUser }) =>
 
 const NavNonAuth = () =>
     <div>
-        <nav id="navBar" className="navbar navbar-expand-lg navbar-dark bg-dark" >
+        <nav id="navBar" className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark" >
             <a className="navbar-brand" id="navbar-brand" >Pijin</a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -71,6 +71,7 @@ const NavNonAuth = () =>
                     <li className="nav-item">
                         <Link to={routes.LANDING} className="nav-link">LANDING</Link>
                     </li>
+                    {/*}
                     <li className="nav-item">
                         <Link to={routes.HOME} className="nav-link">HOME</Link>
                     </li>
@@ -79,17 +80,17 @@ const NavNonAuth = () =>
                     </li>
                     <li className="nav-item">
                         <Link to={routes.EXPLORE} className="nav-link">EXPLORE</Link>
-                    </li>
+                    </li>*/}
                 </ul>
             </div>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <form className="form-inline my-2 my-lg-0">
                     <ul className="navbar-nav mr-auto" id="nav-items">
                         <li className="nav-item">
-                            <Link to={routes.SIGN_UP} className="nav-link">SIGN IN</Link>
+                            <Link to={routes.SIGN_IN} className="nav-link">SIGN IN</Link>
                         </li>
                         <li className="nav-item">
-                            <Link to={routes.SIGN_IN} className="nav-link">SIGN UP</Link>
+                            <Link to={routes.SIGN_UP} className="nav-link">SIGN UP</Link>
                         </li>
                     </ul>
                 </form>
@@ -101,7 +102,7 @@ const NavAuth = ({ authUser }) => (
 
     <div>
 
-        <nav id="navBar" className="navbar navbar-expand-lg navbar-dark bg-dark" >
+        <nav id="navBar" className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark" >
             <a className="navbar-brand" id="navbar-brand" >Pijin</a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -110,6 +111,7 @@ const NavAuth = ({ authUser }) => (
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
                 <ul className="navbar-nav mr-auto" id="nav-items">
+
                     <li className="nav-item">
                         <Link to={routes.LANDING} className="nav-link">LANDING</Link>
                     </li>
@@ -134,7 +136,7 @@ const NavAuth = ({ authUser }) => (
                                         .child("Nombre").on("value", function (snapshot) {
                                             console.log(snapshot.val());
                                             var nom = document.createTextNode(snapshot.val());
-                                            document.getElementById("navbarDropdown").innerHTML="";
+                                            document.getElementById("navbarDropdown").innerHTML = "";
                                             document.getElementById("navbarDropdown").appendChild(nom);
                                         })
 

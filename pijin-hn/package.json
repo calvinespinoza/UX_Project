@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material/textfield": "^0.36.1",
     "firebase": "^5.0.4",
     "google-map-react": "^1.0.4",
     "react": "^16.4.1",

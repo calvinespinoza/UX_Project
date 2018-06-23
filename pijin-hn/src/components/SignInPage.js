@@ -10,11 +10,8 @@ import * as routes from '../constants/routes';
 
 
 const SignInPage = ({ history }) =>
-    <div >
-        <h1>
-            ¡BIENVENIDO A MI PROYECTO!
-    </h1>
-        <h1>SignIn</h1>
+    <div id="sign-up-div" >
+        <h1 id="main-title">Welcome Back</h1>
         <SignInForm history={history} />
 
     </div>
@@ -76,21 +73,36 @@ class SignInForm extends Component {
             <div className="container">
 
                 <div className="form-signin">
-                    <label for="inputEmail" class="sr-only">Email address</label>
-                    <input value={email}
-                        onChange={event => this.setState(byPropKey('email', event.target.value))}
-                        type="text"
-                        placeholder="Email Address" />
-                    <label for="inputPassword" class="sr-only">Password</label>
-                    <input value={password}
-                        onChange={event => this.setState(byPropKey('password', event.target.value))}
-                        type="password"
-                        placeholder="Password" />
-                    <button disabled={isInvalid} type="submit" onClick={this.onClick}>
-                        Sign In
-        </button>
+
+                    <ul id="input-list" >
+
+                        <li class="uk-margin">
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: user"></span>
+                                <input id="sign-up-input" class="uk-input" value={email}
+                                    onChange={event => this.setState(byPropKey('email', event.target.value))}
+                                    type="text"
+                                    placeholder="Email Address" />
+                            </div>
+                        </li>
+
+                        <li class="uk-margin">
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                                <input
+                                    id="sign-up-input" class="uk-input" value={password}
+                                    onChange={event => this.setState(byPropKey('password', event.target.value))}
+                                    type="password"
+                                    placeholder="Password" />
+                            </div>
+                        </li>
+
+                    </ul>
 
                 </div>
+                <button className="uk-button"id="bt-signup" disabled={isInvalid} onClick={this.onClick}>
+                    Log In
+                </button>
                 {error && <p>{error.message}</p>}
             </div>
         );

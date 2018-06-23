@@ -6,7 +6,7 @@ import * as routes from '../constants/routes';
 const SignUpButton = () =>
   
     <Link to={routes.SIGN_UP}>
-        <button className="w3-button w3-round-xxlarge" id="bt-login">SIGN UP</button>
+        <button className="uk-button uk-button-default" id="bt-login">SIGN UP</button>
     </Link>
   
 

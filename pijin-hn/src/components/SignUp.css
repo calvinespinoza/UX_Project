@@ -1,14 +1,15 @@
 #main-title {
-    font-family: Montserrat;
-    font-weight: 900;
-    letter-spacing: 5px;
+    font-family:  Montserrat, 'sans-serif';
+    font-weight: 700;
+    letter-spacing: .4em;
     text-transform: uppercase;
-    font-size: 40px;
+    font-size: 9vmin;
 }
 
 #input-list {
     list-style-type: none;
-    text-align: center;
+    margin: 0 auto;
+    margin-top: 5vmin;
 }
 
 #input-list-item {
@@ -36,4 +37,33 @@
     margin: 30px;
     align-content: center;
     background: linear-gradient(to right, rgb(86,106,126), rgb(65,130,141));
+    border: none;
+    border-radius: 30px;
+}
+
+input.uk-input {
+    border-radius: 18px;
+    background-color: rgb(247, 245, 245);
+    border-color: rgb(231, 231, 231);
+}
+
+input.uk-input:focus {
+    border-color: rgba(65, 130, 141, 0.473);
+    border-width: 1.5px;
+}
+
+@media (max-width: 800px) {
+    #main-title {
+        font-size: 3em;
+    }
+    #input-list {
+        font-size: .8em;
+    }
+}
+
+@media (min-width: 800px) {
+    #input-list {
+        width: 50vw;
+        text-align: center;
+    }
 }
