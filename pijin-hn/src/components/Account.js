@@ -127,7 +127,7 @@ export class Profile extends React.Component {
 
   render() {
     return (
-      <div className="container" onLoad={this.test}>
+      <div className="container-account" onLoad={this.test}>
         <div className="rela-block container">
           <div className="rela-block profile-card">
             <div id="profile-container">
