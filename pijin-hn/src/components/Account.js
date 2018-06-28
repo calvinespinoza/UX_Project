@@ -2,14 +2,13 @@ import React from 'react';
 import './Account.css';
 import def from './def.jpg';
 import $ from 'jquery';
+import * as firebase from 'firebase';
 
 const Account = () =>
   <div>
     <h1>Account</h1>
     <Profile />
   </div>
-
-
 
 export class Profile extends React.Component {
   constructor(props) {
@@ -20,60 +19,90 @@ export class Profile extends React.Component {
       db: { img: {} },
       loaded: false,
 
-      name:"",
-      email:"",
-      username:"",
-      telephone:"",
-
-
+      name: "",
+      email: "",
+      username: "",
+      telephone: "",
 
     };
-    this.init_images = this.init_images.bind(this);
-    this.add_images = this.add_images.bind(this);
+
+    //this.test = this.test.bind(this);
     this.fasterPreview = this.fasterPreview.bind(this);
     this.imageUp = this.fasterPreview.bind(this);
+    this.setState = this.setState.bind(this);
+
 
   }
 
+  componentDidMount() {
+    var userRef = firebase.database().ref().child("Usuarios").child("9esyUsxZ2pcFBXkFqeMfo24jMkh2");
+    var nameaux;
+    var emailaux;
+    var usernameaux;
+    var telephoneaux;
+
+    userRef.on("value", function (snapshot) {
+      nameaux = snapshot.child("Nombre").val();
+      emailaux = snapshot.child("Email").val();
+      usernameaux = snapshot.child("Username").val();
+      telephoneaux = snapshot.child("Telephone").val();
+      
+      document.getElementById("user_name").innerHTML = nameaux;
+      document.getElementById("user_description").innerHTML = usernameaux;
+      document.getElementById("user_email").innerHTML = emailaux;
+      document.getElementById("user_phone").innerHTML = telephoneaux;
+      
+      
 
 
-componentDidMount(){
-
-
-    this.setState({ 
-      "name": "Jahaziel",
-      "email": "puta@vida.suicide"
-
+/*
+      this.setState({
+        "name": nameaux,
+        "email": emailaux,
+        "username": usernameaux,
+        "telephone": telephoneaux
+      })
+*/
     })
-}
-
-
-  init_images() {
-    var total_images = $('.image').length;
-    for (var i = 0; i < total_images; i++) {
-      $('.image').eq(i).addClass('image' + i);
-      $('.image' + i).css('background', 'url("' + this.state.db.img[i].src + '") center no-repeat')
-    }
+    console.log(emailaux);
+    console.log(telephoneaux);
+    console.log("hola");
+        /*
+    this.setState({
+      "name": nameaux,
+      "email": emailaux,
+      "username": usernameaux,
+      "telephone": telephoneaux
+    })*/
   }
-
-  add_images() {
-    var total_images = $('.image').length; // Getting total number of images on the page.
-
-    for (var i = 1; i < 13; i++) {
-      var this_num = total_images + i;
-
-      // Check for end of images
-      if (this_num > Object.keys(this.state.db.img).length) { $('.more-images').addClass('inactive'); this.state.inf_scroll = false; return false; };
-
-      $('.content').append('<div class="rela-inline image image' + this_num + '"></div>');
-      $('.image' + this_num).css('background', 'url("' + this.state.db.img[this_num - 1].src + '") center no-repeat')
-    };
-
-    if ((total_images + 7) > Object.keys(this.state.db.img).length) {
-      $('.more-images').addClass('inactive');
-      this.state.inf_scroll = false;
-    };
-  };
+  /*
+  test(){
+    var userRef= firebase.database().ref().child("Usuarios").child("9esyUsxZ2pcFBXkFqeMfo24jMkh2");
+    var nameaux;
+    var emailaux;
+    var usernameaux;
+    var telephoneaux;
+  
+    userRef.on("value",function(snapshot){
+      nameaux= snapshot.child("Nombre").val();
+      emailaux= snapshot.child("Email").val();
+      usernameaux= snapshot.child("Username").val();
+      telephoneaux = snapshot.child("Telephone").val();
+      console.log(emailaux);
+  
+    })
+    
+    this.setState({ 
+      "name": nameaux,
+      "email": emailaux,
+      "username": usernameaux,
+      "telephone": telephoneaux
+  
+    })
+  
+    console.log(emailaux);
+  
+  }*/
 
   profImage() {
     $("#profileImage").click(function (e) {
@@ -95,9 +124,10 @@ componentDidMount(){
   }
 
 
+
   render() {
     return (
-      <div className="container">
+      <div className="container" onLoad={this.test}>
         <div className="rela-block container">
           <div className="rela-block profile-card">
             <div id="profile-container">
@@ -106,7 +136,7 @@ componentDidMount(){
             <input onClick={this.imageUp} id="imageUpload" type="file" name="profile_photo" placeholder="Photo" required capture />
             <div className="rela-block profile-name-container">
               <div className="rela-block user-name" id="user_name" >{this.state.name}</div>
-              <div className="rela-block user-desc" id="user_description">The Space Invader</div>
+              <div className="rela-block user-desc" id="user_description">{this.state.username}</div>
             </div>
             <div className="rela-block profile-card-stats">
               <div className="floated profile-stat works" id="num_works">28
@@ -120,13 +150,16 @@ componentDidMount(){
               </div>
             </div>
             <div className="rela-block profile-card-stats InfoExtra">
-              <div className="rela-block user-name">Correo:</div>
-              <div className="rela-block user-desc" id="InfoExtra">{this.state.email}</div>
+              <div className="rela-block user-name">Email:</div>
+              <div className="rela-block user-desc" id="user_email">{this.state.email}</div>
             </div>
             <div className="rela-block profile-card-stats InfoExtra">
-              <div className="rela-block user-name" >Amigos:</div>
-              <div className="rela-block user-desc"  id="InfoExtra">Jahaziel</div>
+              <div className="rela-block user-name">Phone:</div>
+              <div className="rela-block user-desc" id ="user_phone"></div>
             </div>
+
+            {/*<button onClick= {this.test}>ad</button>*/}
+
           </div>
         </div>
       </div>
@@ -134,12 +167,6 @@ componentDidMount(){
     );
   }
 };
-
-
-
-
-
-
 
 
 
