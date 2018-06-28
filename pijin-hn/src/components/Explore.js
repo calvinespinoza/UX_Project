@@ -6,7 +6,7 @@ import './Explore.css';
 
 const Explore = () =>
   <div id="explore">
-    <h1 id="main-title"></h1>
+    <h1 id="main-title">Explore</h1>
     <ExploreFeed />
   </div>
 
