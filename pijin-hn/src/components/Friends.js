@@ -21,21 +21,22 @@ export class FriendFeed extends Component {
       if (user) {
         var id = user.uid;
         console.log(user.uid);
-        var friendRef = firebase.database().ref().child("Usuarios").child(id).child("Amigos");
+        var friendRef = firebase.database().ref().child("Usuarios").child(id).child("Amigos").child("Llave");
         var exp = document.getElementById("explore-div");
 
         friendRef.on("value", snap => {
           var userInfo = snap.val();
-          if (userInfo) {
+          /*if (userInfo) {
             var keys = Object.keys(userInfo);
             for(var i=0; i<keys.length;i++){
               var k = keys[i];
               var friendId = userInfo[k].Llave;
               console.log(friendId);
-              //this.getFriend(friendId);
+              //
             }
             console.log(keys);
-          }
+          }*/
+          //getFriend(userInfo);
           console.log("hola");
           console.log(userInfo);
         })
@@ -43,8 +44,8 @@ export class FriendFeed extends Component {
     })
   }
 
-  getFriend(id) {
-    var friendRef = firebase.database().ref().child("Usuarios").child(id);
+  getFriend(friendId) {
+    var friendRef = firebase.database().ref().child("Usuarios").child(friendId);
     friendRef.on("value", snap => {
       var userInfo = snap.val();
       if (userInfo) {
