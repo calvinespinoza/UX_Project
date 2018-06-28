@@ -1,8 +1,9 @@
 import React from 'react';
 import './Home.css';
 import test from './test.jpg';
-import {ExploreFeed} from './Explore'
+import {ExploreFeed} from './Explore';
 
+import {FriendFeed} from './Friends';
 import * as routes from '../constants/routes';
 import { Link } from 'react-router-dom';
 
@@ -17,7 +18,7 @@ const Home = () =>
         <ExploreFeed />
         <div id="sub-title">Categories</div>
         <Categories />
-        
+        <FriendFeed/>
 
     </div>
 
