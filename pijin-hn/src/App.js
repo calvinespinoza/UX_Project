@@ -14,6 +14,7 @@ import SignInPage from './components/SignInPage';
 import NewEvent from './components/NewEvent';
 
 import * as routes from './constants/routes';
+import Friends from './components/Friends';
 
 
 class App extends Component {
@@ -113,6 +114,10 @@ class App extends Component {
             <Route
               exact path={routes.ACCOUNT}
               component={() => <Account />}
+            />
+            <Route
+              exact path={routes.FRIENDS}
+              component={()=> <Friends />}
             />
           </div>
 
