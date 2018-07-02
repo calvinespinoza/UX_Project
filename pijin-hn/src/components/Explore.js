@@ -132,9 +132,10 @@ export class ExploreFeed extends Component {
             <div id="event-title">{this.state.fechaInicio}</div>
             <div id="event-name-modal">{this.state.eventName}</div>
             <div id="event-loc-modal">{this.state.location}</div>
-            <div id="event-title"> </div>
-            <div id="event-title"><b>Hora Inicio:</b> {this.state.horaInicio}</div>
-            <div id="event-title"><b>Hora Final:</b> {this.state.horaFinal}</div>
+            <div id="event-div">
+              <div id="event-title"><b>Hora Inicio:</b> {this.state.horaInicio}</div>
+              <div id="event-title"><b>Hora Final:</b> {this.state.horaFinal}</div>
+            </div>
 
           </div>
           <button id="close-button" onClick={this.handleCloseModal}><span uk-icon="close"></span></button>
@@ -166,9 +167,30 @@ class ExampleApp extends React.Component {
     this.filterArte = this.filterArte.bind(this);
 
   }
-
   handleOpenModal() {
     this.setState({ showModal: true });
+    var key = this.state.currentEvent;
+    var eventRef = firebase.database().ref().child("Eventos proximos").child(key)
+    var nombre;
+    var locName;
+    var fInicio;
+    var hInicio;
+    var hFinal;
+    eventRef.on("value", function (snapshot) {
+      nombre = snapshot.child("Nombre").val();
+      locName = snapshot.child("Lugar").val();
+      fInicio = snapshot.child("Fecha Inicio").val();
+      hInicio = snapshot.child("Hora Inicio").val();
+      hFinal = snapshot.child("Hora Final").val();
+    })
+    this.setState(
+      {
+        "eventName": nombre,
+        "location": locName,
+        "fechaInicio": fInicio,
+        "horaInicio": hInicio,
+        "horaFinal": hFinal
+      });
   }
 
   handleCloseModal() {
@@ -219,31 +241,27 @@ class ExampleApp extends React.Component {
     })
   }
 
-  filterFiesta()
-  {
+  filterFiesta() {
     this.setState({
       filter: "Fiesta"
     })
     console.log(this.state.filter);
   }
-  filterComida()
-  {
+  filterComida() {
     this.setState({
       filter: "Comida"
     })
     console.log(this.state.filter);
   }
 
-  filterEnVivo()
-  {
+  filterEnVivo() {
     this.setState({
       filter: "En Vivo"
     })
     console.log(this.state.filter);
   }
 
-  filterGaming()
-  {
+  filterGaming() {
     this.setState({
       filter: "Gaming"
     })
@@ -251,8 +269,7 @@ class ExampleApp extends React.Component {
   }
 
 
-  filterMusicon()
-  {
+  filterMusicon() {
     this.setState({
       filter: "Musicon"
     })
@@ -260,8 +277,7 @@ class ExampleApp extends React.Component {
   }
 
 
-  filterBares()
-  {
+  filterBares() {
     this.setState({
       filter: "Bares"
     })
@@ -269,8 +285,7 @@ class ExampleApp extends React.Component {
   }
 
 
-  filterAireLibre()
-  {
+  filterAireLibre() {
     this.setState({
       filter: "Aire Libre"
     })
@@ -278,8 +293,7 @@ class ExampleApp extends React.Component {
   }
 
 
-  filterDeportes()
-  {
+  filterDeportes() {
     this.setState({
       filter: "Deportes"
     })
@@ -287,8 +301,7 @@ class ExampleApp extends React.Component {
   }
 
 
-  filterArte()
-  {
+  filterArte() {
     this.setState({
       filter: "Arte"
     })
@@ -298,7 +311,7 @@ class ExampleApp extends React.Component {
   render() {
     return (
       <div id="categories">
-              <div id="sub-title">Categories</div>
+        <div id="sub-title">Categories</div>
 
         <button className="bt-category" onMouseOver={this.filterFiesta} onClick={this.filter}>Fiesta</button>
         <button className="bt-category" onMouseOver={this.filterComida} onClick={this.filter}>Comida</button>
@@ -310,6 +323,26 @@ class ExampleApp extends React.Component {
         <button className="bt-category" onMouseOver={this.filterDeportes} onClick={this.filter}>Deportes</button>
         <button className="bt-category" onMouseOver={this.filterArte} onClick={this.filter}>Arte</button>
 
+              <ReactModal
+          isOpen={this.state.showModal}
+          contentLabel="onRequestClose Example"
+          onRequestClose={this.handleCloseModal}
+          className="Modal"
+          overlayClassName="Overlay"
+        >
+          <div id="heading-modal">
+            <div id="modal-detail"></div>
+            <div id="event-title">{this.state.fechaInicio}</div>
+            <div id="event-name-modal">{this.state.eventName}</div>
+            <div id="event-loc-modal">{this.state.location}</div>
+            <div id="event-div">
+              <div id="event-title"><b>Hora Inicio:</b> {this.state.horaInicio}</div>
+              <div id="event-title"><b>Hora Final:</b> {this.state.horaFinal}</div>
+            </div>
+
+          </div>
+          <button id="close-button" onClick={this.handleCloseModal}><span uk-icon="close"></span></button>
+        </ReactModal>
 
       </div>
     );
