@@ -20,7 +20,7 @@ exports.helloWorld = functions.https.onRequest((request, response) => {
     //Obteniendo las cantidades de msg publicos y privados
     amigos=0;
     var id = request.query.text;
-    var friendRef = firebase.database().ref().child("Usuarios").child(id).child("Amigos");
+    var friendRef = database().ref().child("Usuarios").child(id).child("Amigos");
     //var exp = document.getElementById("explore-div");
 
     friendRef.on("value", snap => {
