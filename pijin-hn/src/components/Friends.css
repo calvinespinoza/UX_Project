@@ -11,9 +11,14 @@
     margin: 2em;
     align-content: left;
     position: relative;
-    transition: transform .25s;
+    --transition: transform .25s;
     border-radius: 30px;
     overflow: hidden
+}
+#add-bt {
+    border: none;
+    background: rgb(218, 218, 218);
+    border-radius: 20px;
 }
 
 #bt-friend:hover {
@@ -22,7 +27,7 @@
 #box-friend {
     background-color: rgb(253, 253, 253);
     width: 100%;
-    height: 20%;
+    height: 30%;
     position: absolute;
     bottom: 0;
     left: 0;

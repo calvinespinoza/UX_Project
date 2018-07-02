@@ -29,43 +29,40 @@ export class FriendFeed extends Component {
         var exp = document.getElementById("explore-div");
 
         friendRef.on("value", snap => {
-          var friends = snap.val();
+          snap.forEach(function (snap) {
+            var userInfo = snap.val();
+            console.log(userInfo);
+            var friendRef2 = firebase.database().ref().child("Usuarios").child(userInfo);
+            friendRef2.on("value", snap => {
 
-          var keys = Object.keys(friends);
-          console.log(keys);
-          for (var i = 0; i < keys.length; i++) {
-            var k = keys[i];
-            var friendKey = friends[k];
-            console.log(friendKey);
-            var friendRef = firebase.database().ref().child("Usuarios").child(friendKey);
-            friendRef.on("value", snap => {
-              var userInfo = snap.val();
-              if (userInfo) {
-                var nombre = snap.child("Nombre").val();
-                var boxfr = document.createElement('div');
-                var add = document.createElement("button");
-                var friend = document.createElement('div');
-                friend.className = "w3-button w3-round-xlarge zoom";
-                friend.setAttribute("id", "bt-friend");
-                boxfr.setAttribute("id", "box-friend");
-                var name = document.createElement('p');
-                name.setAttribute("id", "friend-name");
-                name.id = "friend-name";
+              var nombre = snap.child("Nombre").val();
+              var boxfr = document.createElement('div');
+              var add = document.createElement("button");
+              add.setAttribute("id","add-bt");
+              var friend = document.createElement('div');
+              friend.className = "w3-button w3-round-xlarge zoom";
+              friend.setAttribute("id", "bt-friend");
+              boxfr.setAttribute("id", "box-friend");
+              var name = document.createElement('p');
+              name.setAttribute("id", "friend-name");
+              name.id = "friend-name";
 
-                var t1 = document.createTextNode(nombre);
-                var t2 = document.createTextNode("INVITE TO PARTY");
-                add.appendChild(t2);
-                name.appendChild(t1);
-                name.appendChild(add);
+              var t1 = document.createTextNode(nombre);
+              var t2 = document.createTextNode("INVITE");
+              add.appendChild(t2);
+              name.appendChild(t1);
+              name.appendChild(add);
 
-                boxfr.appendChild(name);
-                friend.appendChild(boxfr);
-                document.getElementById("friend-div").appendChild(friend);
-              }
+              boxfr.appendChild(name);
+              friend.appendChild(boxfr);
+              document.getElementById("friend-div").appendChild(friend);
 
-              console.log(userInfo);
             })
-          }
+
+          })
+
+
+
 
 
 

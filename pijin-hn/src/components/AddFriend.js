@@ -51,6 +51,7 @@ export class FriendFeed extends Component {
                     var nombre = snap.child("Nombre").val();
                     var boxfr = document.createElement('div');
                     var add = document.createElement("button");
+                    add.setAttribute("id","add-bt")
                     var friend = document.createElement('div');
                     var idT = snap.child("Llave").val();
                     friend.className = "w3-button w3-round-xlarge zoom";
@@ -61,7 +62,7 @@ export class FriendFeed extends Component {
                     name.id = "friend-name";
 
                     var t1 = document.createTextNode(nombre);
-                    var t2 = document.createTextNode("Add Friend!");
+                    var t2 = document.createTextNode("Add");
                     add.onclick = this.addF;
                     friend.onmouseover = () => {
                         console.log("hi");
