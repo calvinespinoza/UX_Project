@@ -32,12 +32,7 @@ exports.helloWorld = functions.https.onRequest((request, response) => {
             var k = keys[i];
             var friendKey = friends[k];
             console.log(friendKey);
-            var friendRef = firebase.database().ref().child("Usuarios").child(friendKey);
-            friendRef.on("value", snap => {
-                amigos++;
-
-                
-            })
+            amigos++;
         }
 
 
