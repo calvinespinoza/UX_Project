@@ -15,7 +15,7 @@ import NewEvent from './components/NewEvent';
 
 import * as routes from './constants/routes';
 import Friends from './components/Friends';
-import {AddFriend} from './components/Friends';
+import AddFriend from './components/AddFriend';
 
 class App extends Component {
 

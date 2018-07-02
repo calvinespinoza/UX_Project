@@ -4,9 +4,7 @@ import ReactDOM from 'react-dom';
 import * as firebase from 'firebase';
 import './Friends.css';
 
-export const AddFriend = () => <div id="friend-div">
-  HOLA
-</div>
+
 
 
 const Friends = () =>
