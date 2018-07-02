@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import * as firebase from 'firebase';
 import './Home.css';
 import * as routes from '../constants/routes';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 const NewEvent = ({ history }) =>
     <div id="event">
@@ -70,7 +70,7 @@ class NewEventForm extends Component {
                     "Categorias": {
                         "Fiesta": (this.state.fiesta !== null ? (this.state.fiesta ? true : false) : false),
                         "Comida": (this.state.comida !== null ? (this.state.comida ? true : false) : false),
-                        "En Vivo":(this.state.envivo !== null ? (this.state.envivo ? true : false) : false),
+                        "En Vivo": (this.state.envivo !== null ? (this.state.envivo ? true : false) : false),
                         "Gaming": (this.state.gaming !== null ? (this.state.gaming ? true : false) : false),
                         "Musicon": (this.state.musicon !== null ? (this.state.musicon ? true : false) : false),
                         "Bares": (this.state.bares != null ? (this.state.bares ? true : false) : false),
@@ -264,8 +264,10 @@ class NewEventForm extends Component {
                         </label>
                     </ul>
                 </form>
-                <button id="bt-signup" className="w3-button w3-round-xxlarge" disabled={isInvalid} onClick={this.onClick}>
-                    Create        </button>
+                <Link to={routes.HOME}>
+                    <button id="bt-signup" className="w3-button w3-round-xxlarge" disabled={isInvalid} onClick={this.onClick}>
+                        Create        </button>
+                </Link>
 
                 {error && <p>{error.message}</p>}
             </div>

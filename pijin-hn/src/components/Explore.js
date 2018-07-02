@@ -108,6 +108,7 @@ export class ExploreFeed extends Component {
     })
   }
 
+
   render() {
     return (
       <div id="explore-div">
@@ -135,11 +136,23 @@ class ExampleApp extends React.Component {
   constructor() {
     super();
     this.state = {
-      showModal: false
+      showModal: false,
+      filter: '',
     };
 
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
+    this.filter = this.filter.bind(this);
+    this.filterFiesta = this.filterFiesta.bind(this);
+    this.filterComida = this.filterComida.bind(this);
+    this.filterEnVivo = this.filterEnVivo.bind(this);
+    this.filterGaming = this.filterGaming.bind(this);
+    this.filterMusicon = this.filterMusicon.bind(this);
+    this.filterBares = this.filterBares.bind(this);
+    this.filterAireLibre = this.filterAireLibre.bind(this);
+    this.filterDeportes = this.filterDeportes.bind(this);
+    this.filterArte = this.filterArte.bind(this);
+
   }
 
   handleOpenModal() {
@@ -150,10 +163,142 @@ class ExampleApp extends React.Component {
     this.setState({ showModal: false });
   }
 
+  filter() {
+    document.getElementById("explore-div").innerHTML = "";
+    var eventRef = firebase.database().ref().child("Eventos proximos");
+    var exp = document.getElementById("explore-div");
+
+    eventRef.on("child_added", snap => {
+      if (snap.child("Categorias").child(this.state.filter).val()) {
+        var nombre = snap.child("Nombre").val();
+        var lugar = snap.child("Lugar").val();
+        var id = snap.child("Llave").val();
+
+        var event = document.createElement('div');
+        event.className = "w3-button w3-round-xlarge zoom";
+        event.setAttribute("id", "bt-event");
+        var boxev = document.createElement('div');
+        boxev.setAttribute("id", "box-event");
+        var name = document.createElement('p');
+        name.setAttribute("id", "event-name");
+        name.id = "event-name";
+        var loc = document.createElement('p');
+        loc.setAttribute("id", "event-location");
+
+        var t1 = document.createTextNode(nombre);
+        name.appendChild(t1);
+
+        var t2 = document.createTextNode(lugar);
+        loc.appendChild(t2);
+
+        boxev.appendChild(name);
+        boxev.appendChild(loc);
+
+        event.appendChild(boxev);
+        event.onclick = this.handleOpenModal;
+
+        event.onmouseover = () => {
+          console.log("hi");
+          this.setState({ "currentEvent": id })
+          console.log(this.state.currentEvent);
+        };
+        exp.appendChild(event);
+      }
+    })
+  }
+
+  filterFiesta()
+  {
+    this.setState({
+      filter: "Fiesta"
+    })
+    console.log(this.state.filter);
+  }
+  filterComida()
+  {
+    this.setState({
+      filter: "Comida"
+    })
+    console.log(this.state.filter);
+  }
+
+  filterEnVivo()
+  {
+    this.setState({
+      filter: "En Vivo"
+    })
+    console.log(this.state.filter);
+  }
+
+  filterGaming()
+  {
+    this.setState({
+      filter: "Gaming"
+    })
+    console.log(this.state.filter);
+  }
+
+
+  filterMusicon()
+  {
+    this.setState({
+      filter: "Musicon"
+    })
+    console.log(this.state.filter);
+  }
+
+
+  filterBares()
+  {
+    this.setState({
+      filter: "Bares"
+    })
+    console.log(this.state.filter);
+  }
+
+
+  filterAireLibre()
+  {
+    this.setState({
+      filter: "Aire Libre"
+    })
+    console.log(this.state.filter);
+  }
+
+
+  filterDeportes()
+  {
+    this.setState({
+      filter: "Deportes"
+    })
+    console.log(this.state.filter);
+  }
+
+
+  filterArte()
+  {
+    this.setState({
+      filter: "Arte"
+    })
+    console.log(this.state.filter);
+  }
+
   render() {
     return (
       <div id="categories">
-        <button className="bt-category"></button>
+              <div id="sub-title">Categories</div>
+
+        <button className="bt-category" onMouseOver={this.filterFiesta} onClick={this.filter}>Fiesta</button>
+        <button className="bt-category" onMouseOver={this.filterComida} onClick={this.filter}>Comida</button>
+        <button className="bt-category" onMouseOver={this.filterEnVivo} onClick={this.filter}>En Vivo</button>
+        <button className="bt-category" onMouseOver={this.filterGaming} onClick={this.filter}>Gaming</button>
+        <button className="bt-category" onMouseOver={this.filterMusicon} onClick={this.filter}>Musicon</button>
+        <button className="bt-category" onMouseOver={this.filterBares} onClick={this.filter}>Bares</button>
+        <button className="bt-category" onMouseOver={this.filterAireLibre} onClick={this.filter}>Libre</button>
+        <button className="bt-category" onMouseOver={this.filterDeportes} onClick={this.filter}>Deportes</button>
+        <button className="bt-category" onMouseOver={this.filterArte} onClick={this.filter}>Arte</button>
+
+
       </div>
     );
   }
