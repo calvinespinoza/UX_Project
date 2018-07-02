@@ -34,7 +34,8 @@ exports.helloWorld = functions.https.onRequest((request, response) => {
             console.log(friendKey);
             amigos++;
         }
-
+        console.log(amigos);
+        console-log("Cantidad de amigos:");
 
 
     })
