@@ -23,7 +23,9 @@ export class ExploreFeed extends Component {
       currentEvent: "",
       eventName: "",
       location: "",
-      fechaInicio: ""
+      fechaInicio: "",
+      horaInicio: "",
+      horaFinal: ""
     };
 
     this.handleOpenModal = this.handleOpenModal.bind(this);
@@ -37,16 +39,22 @@ export class ExploreFeed extends Component {
     var nombre;
     var locName;
     var fInicio;
+    var hInicio;
+    var hFinal;
     eventRef.on("value", function (snapshot) {
       nombre = snapshot.child("Nombre").val();
       locName = snapshot.child("Lugar").val();
       fInicio = snapshot.child("Fecha Inicio").val();
+      hInicio = snapshot.child("Hora Inicio").val();
+      hFinal = snapshot.child("Hora Final").val();
     })
     this.setState(
       {
         "eventName": nombre,
         "location": locName,
-        "fechaInicio": fInicio
+        "fechaInicio": fInicio,
+        "horaInicio": hInicio,
+        "horaFinal": hFinal
       });
   }
 
@@ -124,6 +132,10 @@ export class ExploreFeed extends Component {
             <div id="event-title">{this.state.fechaInicio}</div>
             <div id="event-name-modal">{this.state.eventName}</div>
             <div id="event-loc-modal">{this.state.location}</div>
+            <div id="event-title"> </div>
+            <div id="event-title"><b>Hora Inicio:</b> {this.state.horaInicio}</div>
+            <div id="event-title"><b>Hora Final:</b> {this.state.horaFinal}</div>
+
           </div>
           <button id="close-button" onClick={this.handleCloseModal}><span uk-icon="close"></span></button>
         </ReactModal>
