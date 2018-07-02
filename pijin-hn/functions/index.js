@@ -19,7 +19,7 @@ exports.helloWorld = functions.https.onRequest((request, response) => {
 
     //Obteniendo las cantidades de msg publicos y privados
     var userId = request.query.text;
-    return database().ref('Usuarios').child(userId).child('Amigos').on('value', (snapshot) => {
+    return database().ref('Usuarios').child(userId).child('Email').on('value', (snapshot) => {
         var amigos = 0;
         var data = snapshot.val();
         console.log(data);
