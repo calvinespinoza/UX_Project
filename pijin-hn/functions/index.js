@@ -18,16 +18,29 @@ const database = admin.database
 exports.helloWorld = functions.https.onRequest((request, response) => {
 
     //Obteniendo las cantidades de msg publicos y privados
-    var userId = request.query.text;
-    return database().ref('Usuarios').child(userId).child('Email').on('value', (snapshot) => {
-        var amigos = 0;
-        var data = snapshot.val();
-        console.log(data);
-        //var keys = Object.keys(data);
-        /*for (var i = 0; i < keys.length; i++) {
-            amigos++;
-        }
-        console.log(amigos);*/
+    amigos=0;
+    var id = request.query.text;
+    var friendRef = firebase.database().ref().child("Usuarios").child(id).child("Amigos");
+    //var exp = document.getElementById("explore-div");
 
-    });
+    friendRef.on("value", snap => {
+        var friends = snap.val();
+
+        var keys = Object.keys(friends);
+        console.log(keys);
+        for (var i = 0; i < keys.length; i++) {
+            var k = keys[i];
+            var friendKey = friends[k];
+            console.log(friendKey);
+            var friendRef = firebase.database().ref().child("Usuarios").child(friendKey);
+            friendRef.on("value", snap => {
+                amigos++;
+
+                
+            })
+        }
+
+
+
+    })
 });
