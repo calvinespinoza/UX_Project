@@ -38,25 +38,31 @@ class NewEventForm extends Component {
                 var userId = user.uid;*/
         var eventRef = firebase.database().ref().child("Eventos proximos");
         var userRef = firebase.database().ref().child("Usuarios");
-
+        var uid = "";
         //var hostname = userRef.child(userId).child("Nombre");
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                uid = firebase.auth().currentUser.uid;
+                var key = eventRef.push().getKey();
 
-        var key = eventRef.push().getKey();
+                eventRef.child(key).set({
+                    "Nombre": this.state.eventname,
+                    "Lugar": this.state.locationname,
+                    "Fecha Inicio": this.state.fechainicio,
+                    "Fecha Final": this.state.fechafinal,
+                    "Hora Inicio": this.state.horainicio,
+                    "Hora Final": this.state.horafinal,
+                    "Llave": key,
+                    "CreatorId": uid,
+                    /*
+                    "Host": {
+                        "Nombre": hostname,
+                        "Llave": userId
+                    }*/
+                });
+            }
+        })
 
-        eventRef.child(key).set({
-            "Nombre": this.state.eventname,
-            "Lugar": this.state.locationname,
-            "Fecha Inicio": this.state.fechainicio,
-            "Fecha Final": this.state.fechafinal,
-            "Hora Inicio": this.state.horainicio,
-            "Hora Final": this.state.horafinal,
-            "Llave": key,
-            /*
-            "Host": {
-                "Nombre": hostname,
-                "Llave": userId
-            }*/
-        });
         /*
                     }
                 });*/
