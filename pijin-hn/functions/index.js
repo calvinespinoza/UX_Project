@@ -19,17 +19,14 @@ exports.helloWorld = functions.https.onRequest((request, response) => {
 
     //Obteniendo las cantidades de msg publicos y privados
     var userId = request.query.text;
-    return database().ref('Usuarios').child(userId).child('Amigos').on('value',(snapshot) => {
+    return database().ref('Usuarios').child(userId).child('Amigos').on('value', (snapshot) => {
         var amigos = 0;
-        
-        snapshot.forEach( (childSnapshot) =>{
-            var childData = childSnapshot.val();
-            var keys = Object.keys(childData);
-            for (var i = 0; i < keys.length; i++) {
-                amigos++;
-            }
-            console.log(amigos);
-            
-        });
+        var data = snapshot.val();
+        var keys = Object.keys(data);
+        for (var i = 0; i < keys.length; i++) {
+            amigos++;
+        }
+        console.log(amigos);
+
     });
 });
