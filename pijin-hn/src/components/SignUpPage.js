@@ -78,14 +78,18 @@ class SignUpForm extends Component {
                 var ref = firebase.database().ref().child("Usuarios");
 
                 var key = ref.push().getKey();
-
+                console.log("h0ola test");
                 ref.child(userId).set({
                     "Username": username,
                     "Nombre": fullname,
                     "Email": email,
                     "Telephone": telephone,
                     "Password": passwordOne,
-                    "Llave": userId
+                    "Llave": userId,
+                    "Amigos":{
+                        "Llave": "ianwVFH8HFeaDBpDdgxpNj7CLP22",
+                    }
+                    
                 });
             }
         });

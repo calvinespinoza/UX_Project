@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactModal from 'react-modal';
 import ReactDOM from 'react-dom';
 import * as firebase from 'firebase';
-import './Explore.css';
+import './Friends.css';
 
 const Friends = () =>
   <div id="explore">
@@ -27,7 +27,7 @@ export class FriendFeed extends Component {
 
         friendRef.on("value", snap => {
           var friends = snap.val();
-          
+
           var keys = Object.keys(friends);
           console.log(keys);
           for (var i = 0; i < keys.length; i++) {
@@ -41,7 +41,9 @@ export class FriendFeed extends Component {
                 var nombre = snap.child("Nombre").val();
                 var boxfr = document.createElement('div');
                 var add = document.createElement("button");
-
+                var friend = document.createElement('div');
+                friend.className = "w3-button w3-round-xlarge zoom";
+                friend.setAttribute("id", "bt-friend");
                 boxfr.setAttribute("id", "box-friend");
                 var name = document.createElement('p');
                 name.setAttribute("id", "friend-name");
@@ -54,7 +56,8 @@ export class FriendFeed extends Component {
                 name.appendChild(add);
 
                 boxfr.appendChild(name);
-                document.getElementById("friend-div").appendChild(boxfr);
+                friend.appendChild(boxfr);
+                document.getElementById("friend-div").appendChild(friend);
               }
 
               console.log(userInfo);
