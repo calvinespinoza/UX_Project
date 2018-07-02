@@ -149,7 +149,9 @@ const NavAuth = ({ authUser }) => (
                                 <Link to={routes.FRIENDS} className="nav-link">
                                     <a className="dropdown-item" href="#">Friends</a>
                                 </Link>
-
+                                <Link to={routes.FRIENDSADD} className="nav-link">
+                                    <a className="dropdown-item" href="#">ADD Friends</a>
+                                </Link>
                                 <div className="dropdown-divider"></div>
                                 <SignOutButton />
 

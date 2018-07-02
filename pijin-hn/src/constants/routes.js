@@ -8,3 +8,4 @@ export const EXPLORE = '/explore';
 export const MAP = '/map';
 export const NEW_EVENT = '/new-event';
 export const FRIENDS = '/friends';
+export const FRIENDSADD ='/add';

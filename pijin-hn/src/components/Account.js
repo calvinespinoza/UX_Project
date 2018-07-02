@@ -35,45 +35,52 @@ export class Profile extends React.Component {
   }
 
   componentDidMount() {
-    var userRef = firebase.database().ref().child("Usuarios").child("9esyUsxZ2pcFBXkFqeMfo24jMkh2");
-    var nameaux;
-    var emailaux;
-    var usernameaux;
-    var telephoneaux;
 
-    userRef.on("value", function (snapshot) {
-      nameaux = snapshot.child("Nombre").val();
-      emailaux = snapshot.child("Email").val();
-      usernameaux = snapshot.child("Username").val();
-      telephoneaux = snapshot.child("Telephone").val();
-      
-      document.getElementById("user_name").innerHTML = nameaux;
-      document.getElementById("user_description").innerHTML = usernameaux;
-      document.getElementById("user_email").innerHTML = emailaux;
-      document.getElementById("user_phone").innerHTML = telephoneaux;
-      
-      
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        var id = firebase.auth().currentUser.uid;
+        var userRef = firebase.database().ref().child("Usuarios").child(id);
+        var nameaux;
+        var emailaux;
+        var usernameaux;
+        var telephoneaux;
+
+        userRef.on("value", function (snapshot) {
+          nameaux = snapshot.child("Nombre").val();
+          emailaux = snapshot.child("Email").val();
+          usernameaux = snapshot.child("Username").val();
+          telephoneaux = snapshot.child("Telephone").val();
+
+          document.getElementById("user_name").innerHTML = nameaux;
+          document.getElementById("user_description").innerHTML = usernameaux;
+          document.getElementById("user_email").innerHTML = emailaux;
+          document.getElementById("user_phone").innerHTML = telephoneaux;
 
 
-/*
-      this.setState({
-        "name": nameaux,
-        "email": emailaux,
-        "username": usernameaux,
-        "telephone": telephoneaux
-      })
-*/
+
+
+          /*
+                this.setState({
+                  "name": nameaux,
+                  "email": emailaux,
+                  "username": usernameaux,
+                  "telephone": telephoneaux
+                })
+          */
+        })
+        console.log(emailaux);
+        console.log(telephoneaux);
+        console.log("hola");
+      }
     })
-    console.log(emailaux);
-    console.log(telephoneaux);
-    console.log("hola");
-        /*
-    this.setState({
-      "name": nameaux,
-      "email": emailaux,
-      "username": usernameaux,
-      "telephone": telephoneaux
-    })*/
+
+    /*
+this.setState({
+  "name": nameaux,
+  "email": emailaux,
+  "username": usernameaux,
+  "telephone": telephoneaux
+})*/
   }
   /*
   test(){
@@ -155,7 +162,7 @@ export class Profile extends React.Component {
             </div>
             <div className="rela-block profile-card-stats InfoExtra">
               <div className="rela-block user-name">Phone:</div>
-              <div className="rela-block user-desc" id ="user_phone"></div>
+              <div className="rela-block user-desc" id="user_phone"></div>
             </div>
 
             {/*<button onClick= {this.test}>ad</button>*/}

@@ -15,7 +15,7 @@ import NewEvent from './components/NewEvent';
 
 import * as routes from './constants/routes';
 import Friends from './components/Friends';
-
+import {AddFriend} from './components/Friends';
 
 class App extends Component {
 
@@ -118,6 +118,10 @@ class App extends Component {
             <Route
               exact path={routes.FRIENDS}
               component={()=> <Friends />}
+            />
+            <Route
+              exact path={routes.FRIENDSADD}
+              component={()=> <AddFriend />}
             />
           </div>
 
