@@ -169,6 +169,18 @@ class NewEventForm extends Component {
                             placeholder="Hora final"
                         />
                     </div>
+                    <div id="min-title">Categorias</div>
+                    <ul class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+                        <label class="uk-width-1-3"><input class="uk-checkbox" type="checkbox" /> Fiesta </label>
+                        <label class="uk-width-1-3"><input class="uk-checkbox" type="checkbox" /> Comida </label>
+                        <label class="uk-width-1-3"><input class="uk-checkbox" type="checkbox" /> En Vivo</label>
+                        <label class="uk-width-1-3"><input class="uk-checkbox" type="checkbox" /> Musicon</label>
+                        <label class="uk-width-1-3"><input class="uk-checkbox" type="checkbox" /> Gaming </label>
+                        <label class="uk-width-1-3"><input class="uk-checkbox" type="checkbox" /> Bares  </label>
+                        <label class="uk-width-1-3"><input class="uk-checkbox" type="checkbox" /> Aire Libre</label>
+                        <label class="uk-width-1-3"><input class="uk-checkbox" type="checkbox" /> Deportes</label>
+                        <label class="uk-width-1-3"><input class="uk-checkbox" type="checkbox" /> Arte   </label>
+                    </ul>
                 </form>
                 <button id="bt-signup" className="w3-button w3-round-xxlarge" disabled={isInvalid} onClick={this.onClick}>
                     Create        </button>

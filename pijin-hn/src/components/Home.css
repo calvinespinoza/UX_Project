@@ -94,6 +94,26 @@
     margin: 0;
 }
 
+label {
+    font-size: 2vmin;
+    letter-spacing: 1vmin;
+    margin: 30px;
+}
+
+.uk-margin {
+    text-align: left;
+    padding-left: 10vmin;
+}
+
+#min-title {
+    font-family: Montserrat;
+    font-size: 3vmin;
+    font-weight: 700;
+    letter-spacing: 2vmin;
+    text-transform: uppercase;
+    margin-top: 4vmin;
+}
+
 #category-img {
     filter: blur(0px);
 }

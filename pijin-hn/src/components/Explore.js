@@ -7,6 +7,7 @@ import './Explore.css';
 const Explore = () =>
   <div id="explore">
     <h1 id="main-title">Explore</h1>
+    <ExampleApp />
     <ExploreFeed />
   </div>
 
@@ -151,18 +152,8 @@ class ExampleApp extends React.Component {
 
   render() {
     return (
-      <div>
-        <button onClick={this.handleOpenModal}>Trigger Modal</button>
-        <ReactModal
-          className="uk-modal-dialog uk-modal-body"
-          isOpen={this.state.showModal}
-          contentLabel="Minimal Modal Example"
-        >
-
-          <button onClick={this.handleCloseModal}>Close Modal</button>
-        </ReactModal>
-
-
+      <div id="categories">
+        <button className="bt-category"></button>
       </div>
     );
   }

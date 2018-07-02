@@ -116,6 +116,42 @@
     background-color: linear-gradient(to right, rgb(86, 106, 126), rgb(65, 130, 141));
 }
 
+.chip {
+    display: inline-block;
+    padding: 0 25px;
+    height: 50px;
+    font-size: 16px;
+    line-height: 50px;
+    border-radius: 25px;
+    background-color: #f1f1f1;
+}
+
+.chip i {
+    float: left;
+    margin: 0 10px 0 -25px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: indigo;
+    color: white;
+}
+
+#categories {
+    margin: 20px;
+}
+
+.bt-category {
+    width: 15vmin;
+    height: 6vmin;
+    border: none;
+    border-radius: 20px;
+    background: rgb(226, 226, 226);
+}
+
+.bt-category:focus {
+    background: #95989A;
+}
+
 @media (max-width: 500px) {
     #bt-event {
         width: 80vw;

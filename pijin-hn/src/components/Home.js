@@ -18,7 +18,6 @@ const Home = () =>
         <ExploreFeed />
         <div id="sub-title">Categories</div>
         <Categories />
-        <FriendFeed/>
 
     </div>
 
@@ -65,7 +64,7 @@ const Categories = () =>
             <div className="zoom-category" id="box-category">
                 <img src="https://goo.gl/AFe58n" />
             </div>
-            <div id="ctg-name">Alcohol</div>
+            <div id="ctg-name">Bares</div>
         </div>
         <div className="w3-button w3-round-xlarge" id="bt-category">
             <div className="zoom-category" id="box-category">
@@ -83,7 +82,7 @@ const Categories = () =>
             <div className="zoom-category" id="box-category">
                 <img src="https://goo.gl/8UBW4E" id="category-img" />
             </div>
-            <div id="ctg-name">Comida</div>
+            <div id="ctg-name">Arte</div>
         </div>
     </div>
 
