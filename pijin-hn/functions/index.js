@@ -22,11 +22,12 @@ exports.helloWorld = functions.https.onRequest((request, response) => {
     return database().ref('Usuarios').child(userId).child('Amigos').on('value', (snapshot) => {
         var amigos = 0;
         var data = snapshot.val();
-        var keys = Object.keys(data);
-        for (var i = 0; i < keys.length; i++) {
+        console.log(data);
+        //var keys = Object.keys(data);
+        /*for (var i = 0; i < keys.length; i++) {
             amigos++;
         }
-        console.log(amigos);
+        console.log(amigos);*/
 
     });
 });
