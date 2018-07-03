@@ -20,6 +20,11 @@
     margin-bottom: 20px;
 }
 
+.dropdown-menu {
+    border: none;
+    box-shadow:  -2px 10px 121px -23px rgba(0, 0, 0, 0.459);
+}
+
 #navbar-brand {
     font-weight: 800;
     font-size: 2em;;

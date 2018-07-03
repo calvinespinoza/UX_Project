@@ -84,8 +84,7 @@ const NavNonAuth = () =>
                 </ul>
             </div>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <form className="form-inline my-2 my-lg-0">
-                    <ul className="navbar-nav mr-auto" id="nav-items">
+                    <ul className="navbar-nav ml-auto" id="nav-items">
                         <li className="nav-item">
                             <Link to={routes.SIGN_IN} className="nav-link">SIGN IN</Link>
                         </li>
@@ -93,7 +92,6 @@ const NavNonAuth = () =>
                             <Link to={routes.SIGN_UP} className="nav-link">SIGN UP</Link>
                         </li>
                     </ul>
-                </form>
             </div>
         </nav>
     </div>
@@ -123,8 +121,7 @@ const NavAuth = ({ authUser }) => (
                 </ul>
             </div>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <form className="form-inline my-2 my-lg-0">
-                    <ul className="navbar-nav mr-auto" id="nav-items">
+                    <ul className="navbar-nav ml-auto" id="nav-items">
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 {
@@ -138,7 +135,7 @@ const NavAuth = ({ authUser }) => (
 
                                 }
                             </a>
-                            <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <Link to={routes.ACCOUNT} className="nav-link">
                                     <a className="dropdown-item" href="#">Account</a>
                                 </Link>
@@ -154,7 +151,6 @@ const NavAuth = ({ authUser }) => (
                             </div>
                         </li>
                     </ul>
-                </form>
             </div>
         </nav>
     </div>

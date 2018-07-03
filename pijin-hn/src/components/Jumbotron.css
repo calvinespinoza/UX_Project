@@ -3,11 +3,11 @@
     background: linear-gradient(to right, #6E4D6E, #2a9c9c);
     font-family: Montserrat;
     COLOR: WHITE;
-    --height: 500px;
+    height: 100vh;
 }
 
 #mainTitle {
-    margin-top: 8vmin;
+    margin-top: 15vmin;
     font-size: 10vmin;
     font-weight: 800;
     letter-spacing: 2px;

@@ -334,6 +334,7 @@
     -webkit-transition: 0.3s cubic-bezier(0.75, 0, 0.2, 1), width 0.3s 0.15s cubic-bezier(0.75, 0, 0.2, 1);
     transition: 0.3s cubic-bezier(0.75, 0, 0.2, 1), width 0.3s 0.15s cubic-bezier(0.75, 0, 0.2, 1);
   }
+
   .menu-card {
     display: false;
     position: fixed;
@@ -420,7 +421,7 @@
     z-index: 1;
     width: 92%;
     max-width: 1126px;
-    -background-color: #f4f4f4;
+    --background-color: #f4f4f4;
     margin: 70px auto;
     padding: 70px 0;
     font-family: "Roboto";
@@ -433,9 +434,11 @@
   .profile-card {
     width: calc(100% - 40px);
     padding-top: 100px;
+    padding-bottom: 50px;
     margin: 70px auto 30px;
-    background-color: #fff;
-    box-shadow: 0 2px 6px -2px rgba(0,0,0,0.26);
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.459);
   }
   /*.profile-pic {
     display: false;
@@ -675,5 +678,5 @@
     }}
 
     .InfoExtra{
-      margin: 10px;
+      margin: 20px;
     }
