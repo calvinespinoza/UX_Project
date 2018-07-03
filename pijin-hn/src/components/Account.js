@@ -5,7 +5,7 @@ import $ from 'jquery';
 import * as firebase from 'firebase';
 
 const Account = () =>
-  <div>
+  <div id ="account-div">
     <h1>Account</h1>
     <Profile />
   </div>

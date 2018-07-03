@@ -137,7 +137,7 @@ export class ExploreFeed extends Component {
               <div id="event-title"><b>Hora Inicio:</b> {this.state.horaInicio}</div>
               <div id="event-title"><b>Hora Final:</b> {this.state.horaFinal}</div>
             </div>
-             <div><h1>Direccion del evento:</h1>
+             <div id="event-title">Direccion del evento:
             
             </div>
           </div>
