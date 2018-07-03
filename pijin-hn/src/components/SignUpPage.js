@@ -87,7 +87,6 @@ class SignUpForm extends Component {
                     "Password": passwordOne,
                     "Llave": userId,
                     "Amigos":{
-                        "Llave": "ianwVFH8HFeaDBpDdgxpNj7CLP22",
                     }
                     
                 });
