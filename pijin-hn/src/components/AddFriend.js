@@ -32,7 +32,7 @@ export class FriendFeed extends Component {
                 var key = friendRef.push().getKey();
 
                 
-                friendRef.child(key).set({
+                friendRef.child(fkey).set({
                     [fkey]: fkey,
                 });
             }
