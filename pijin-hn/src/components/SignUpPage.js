@@ -72,7 +72,7 @@ class SignUpForm extends Component {
                 this.setState(byPropKey('error', error));
             });
 
-        firebase.auth().onAuthStateChanged(function (user) {
+        firebase.auth().onAuthStateChanged( (user) => {
             if (user) {
                 var userId = firebase.auth().currentUser.uid;
                 var ref = firebase.database().ref().child("Usuarios");

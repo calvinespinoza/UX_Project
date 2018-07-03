@@ -12,12 +12,13 @@ import { Link } from 'react-router-dom';
 const Home = () =>
     <div id="home">
         <div id="main-title">Home</div>
-        <Link to={routes.NEW_EVENT}>
-            <button className="uk-button uk-button-default" id="bt-new-event">New Event</button>
-        </Link>
+
         <div id="sub-title">For You</div>
 
         <ExploreFeed />
+        <Link to={routes.NEW_EVENT}>
+            <button className="uk-button uk-button-default" id="bt-new-event">New Event</button>
+        </Link>
         <div id="sub-title">Categories</div>
         <Categories />
 

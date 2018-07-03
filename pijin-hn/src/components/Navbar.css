@@ -25,6 +25,22 @@
     box-shadow:  -2px 10px 121px -23px rgba(0, 0, 0, 0.459);
 }
 
+#bt-new-event-nav {
+    color: rgb(255, 255, 255);
+    --box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.199);
+    width: 10vw;
+    height: 50px;
+    font-weight: 600;
+    font-size: .8em;
+    line-height: 1.5em;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    --margin: 5em auto;
+    border-width: 1px;
+    border-radius: 20px;
+    background: transparent;
+}
+
 #navbar-brand {
     font-weight: 800;
     font-size: 2em;;

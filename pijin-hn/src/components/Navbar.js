@@ -84,14 +84,14 @@ const NavNonAuth = () =>
                 </ul>
             </div>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav ml-auto" id="nav-items">
-                        <li className="nav-item">
-                            <Link to={routes.SIGN_IN} className="nav-link">SIGN IN</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to={routes.SIGN_UP} className="nav-link">SIGN UP</Link>
-                        </li>
-                    </ul>
+                <ul className="navbar-nav ml-auto" id="nav-items">
+                    <li className="nav-item">
+                        <Link to={routes.SIGN_IN} className="nav-link">SIGN IN</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to={routes.SIGN_UP} className="nav-link">SIGN UP</Link>
+                    </li>
+                </ul>
             </div>
         </nav>
     </div>
@@ -121,36 +121,41 @@ const NavAuth = ({ authUser }) => (
                 </ul>
             </div>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav ml-auto" id="nav-items">
-                        <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {
-                                    firebase.database().ref().child("Usuarios").child(authUser.uid)
-                                        .child("Nombre").on("value", function (snapshot) {
-                                            console.log(snapshot.val());
-                                            var nom = document.createTextNode(snapshot.val());
-                                            document.getElementById("navbarDropdown").innerHTML = "";
-                                            document.getElementById("navbarDropdown").appendChild(nom);
-                                        })
+                <ul className="navbar-nav ml-auto" id="nav-items">
+                    <li className="nav-item">
+                        <Link to={routes.NEW_EVENT}>
+                            <button className="uk-button uk-button-default" id="bt-new-event-nav">New Event</button>
+                        </Link>
+                    </li>
+                    <li className="nav-item dropdown">
+                        <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {
+                                firebase.database().ref().child("Usuarios").child(authUser.uid)
+                                    .child("Nombre").on("value", function (snapshot) {
+                                        console.log(snapshot.val());
+                                        var nom = document.createTextNode(snapshot.val());
+                                        document.getElementById("navbarDropdown").innerHTML = "";
+                                        document.getElementById("navbarDropdown").appendChild(nom);
+                                    })
 
-                                }
-                            </a>
-                            <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <Link to={routes.ACCOUNT} className="nav-link">
-                                    <a className="dropdown-item" href="#">Account</a>
-                                </Link>
-                                <Link to={routes.FRIENDS} className="nav-link">
-                                    <a className="dropdown-item" href="#">Friends</a>
-                                </Link>
-                                <Link to={routes.FRIENDSADD} className="nav-link">
-                                    <a className="dropdown-item" href="#">ADD Friends</a>
-                                </Link>
-                                <div className="dropdown-divider"></div>
-                                <SignOutButton />
+                            }
+                        </a>
+                        <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <Link to={routes.ACCOUNT} className="nav-link">
+                                <a className="dropdown-item" href="#">Account</a>
+                            </Link>
+                            <Link to={routes.FRIENDS} className="nav-link">
+                                <a className="dropdown-item" href="#">Friends</a>
+                            </Link>
+                            <Link to={routes.FRIENDSADD} className="nav-link">
+                                <a className="dropdown-item" href="#">ADD Friends</a>
+                            </Link>
+                            <div className="dropdown-divider"></div>
+                            <SignOutButton />
 
-                            </div>
-                        </li>
-                    </ul>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </nav>
     </div>
