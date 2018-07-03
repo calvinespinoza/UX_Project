@@ -3,6 +3,7 @@ import ReactModal from 'react-modal';
 import ReactDOM from 'react-dom';
 import * as firebase from 'firebase';
 import './Explore.css';
+import CustomMap from './CustomMap';
 
 const Explore = () =>
   <div id="explore">
@@ -116,7 +117,7 @@ export class ExploreFeed extends Component {
     })
   }
 
-
+  /*meter mapa aqui!*/
   render() {
     return (
       <div id="explore-div">
@@ -136,7 +137,9 @@ export class ExploreFeed extends Component {
               <div id="event-title"><b>Hora Inicio:</b> {this.state.horaInicio}</div>
               <div id="event-title"><b>Hora Final:</b> {this.state.horaFinal}</div>
             </div>
-
+             <div><h1>Direccion del evento:</h1>
+            
+            </div>
           </div>
           <button id="close-button" onClick={this.handleCloseModal}><span uk-icon="close"></span></button>
         </ReactModal>
@@ -145,6 +148,7 @@ export class ExploreFeed extends Component {
   }
 }
 
+/* <CustomMap/>  */ 
 class ExampleApp extends React.Component {
   constructor() {
     super();
@@ -323,7 +327,7 @@ class ExampleApp extends React.Component {
         <button className="bt-category" onMouseOver={this.filterDeportes} onClick={this.filter}>Deportes</button>
         <button className="bt-category" onMouseOver={this.filterArte} onClick={this.filter}>Arte</button>
 
-              <ReactModal
+        <ReactModal
           isOpen={this.state.showModal}
           contentLabel="onRequestClose Example"
           onRequestClose={this.handleCloseModal}
