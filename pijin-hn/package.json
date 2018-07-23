@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@material/textfield": "^0.36.1",
+    "bootstrap": "^4.1.2",
     "firebase": "^5.0.4",
     "google-map-react": "^1.0.4",
     "jquery": "^3.3.1",

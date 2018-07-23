@@ -145,14 +145,14 @@ this.setState({
               <div className="rela-block user-name" id="user_name" >{this.state.name}</div>
               <div className="rela-block user-desc" id="user_description">{this.state.username}</div>
             </div>
-            <div className="rela-block profile-card-stats">
-              <div className="floated profile-stat works" id="num_works">28
+              <div className="rela-block profile-card-stats">
+              <div className="floated profile-stat works" id="num_works">0
                         <br />
               </div>
-              <div className="floated profile-stat followers" id="num_followers">112
+              <div className="floated profile-stat followers" id="num_followers">0
                              <br />
               </div>
-              <div className="floated profile-stat following" id="num_following">245
+              <div className="floated profile-stat following" id="num_following">0
                              <br />
               </div>
             </div>

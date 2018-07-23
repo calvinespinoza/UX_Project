@@ -490,13 +490,13 @@
     color: #999;
   }
   .works::after {
-    content: "works";
+    content: "Friends";
   }
   .followers::after {
-    content: "followers";
+    content: "Events created";
   }
   .following::after {
-    content: "following";
+    content: "Events attended";
   }
   .image {
     width: 240px;
